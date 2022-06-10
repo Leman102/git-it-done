@@ -17,17 +17,32 @@
     <p>Search for a GitHub user or click on a language to see a list of repositories and how many open issues they have!
     </p>
   </header>
-
-
   <main class="flex-row justify-space-between">
-    <!-- <ul class="list-group">
-      l
-      <li class="list-item">1</li>
-      <li class="list-item">1</li>
-      <li class="list-item">1</li>
-      <li class="list-item">1</li>
-      <li class="list-item">1</li>
-    </ul> -->
+
+    <div class="col-12 col-md-4">
+
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search By user</h3>
+        <form id="user-form" class="card-body">
+          <label class="form-label" for="username">Username</label>
+          <input name="username" id="username" type="text" autofocus="true" class="form-input" />
+          <button type="submit" class="btn">Get User</button>
+        </form>
+      </div>
+
+      <div class="card">
+        <h3 class="card-header text-uppercase">Search By language</h3>
+        <button type="submit" class="btn">html</button>
+        <button type="submit" class="btn">java</button>
+        <button type="submit" class="btn">css</button>
+      </div>
+    </div>
+
+    <div class="col-12 col-md-8">
+      <h2 class="subtitle">Showing repositories for: <span id="repo-search-term"></span></h2>
+
+      <div id="repos-container" class="list-group"></div>
+    </div>
 
   </main>
   <script src="/assets/js/homepage.js"></script>
