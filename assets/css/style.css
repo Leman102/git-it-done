@@ -197,8 +197,9 @@ p {
 .text-uppercase {
   text-transform: uppercase;
 }
-
-
+.text-lowercase {
+  text-transform: lowercase;
+}
 /* FLEX CONTENT */
 .flex-row {
   display: flex;
