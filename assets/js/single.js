@@ -1,6 +1,22 @@
 //declare DOM variables
 var issueContainerEl = document.querySelector("#issues-container");
 var limitWarningEl = document.querySelector("#limit-warning");
+var repoNameEl = document.querySelector("#repo-name");
+
+var getRepoName = function(){
+    //select the repo name from the element repoEl from homepage.js 
+    var queryString = document.location.search;
+    //select the just the repo name from the objact using split + index
+    var repoName = queryString.split("=")[1];
+    // validate if the repo exists
+    if(repoName){
+        // display repo name on the page
+        repoNameEl.textContent = repoName;
+        getRepoIssues(repoName);
+    }else { //return to landing page
+        document.location.replace("./index.html");
+    }   
+};
 
 var getRepoIssues = function(repo){
     console.log(repo);
@@ -10,17 +26,16 @@ var getRepoIssues = function(repo){
         //request was successfull
         if(response.ok){
             response.json().then(function(data){
-                console.log(data);
+                // console.log(data);
                 displayIssues(data)
                 
                 // check if api has paginated issues
                 if (response.headers.get("Link")) {
                     displayWarning(repo)
                 }
-
             });
-        } else {
-            alert("There was a problem with your request!");
+        } else { //if request was not successfull dend to homepage
+            document.location.replace("./index.html");
         }
     }).catch("error");
 };
@@ -75,4 +90,4 @@ var displayWarning = function(repo){
     limitWarningEl.append(linkEl);
 };
 
-getRepoIssues("facebook/react");
+getRepoName();
